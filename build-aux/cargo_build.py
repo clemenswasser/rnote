@@ -2,6 +2,8 @@
 
 import sys
 import os
+import shutil
+import subprocess
 
 project_build_root = sys.argv[1]
 project_src_root = sys.argv[2]
@@ -26,10 +28,5 @@ output_file: {output_file}
 ###
 """)
 
-cargo_call = f"env {cargo_env} {cargo_cmd} build {cargo_options}"
-cp_call = f"cp {bin_output} {output_file}"
-
-print(cargo_call)
-os.system(cargo_call)
-print(cp_call)
-os.system(cp_call)
+subprocess.run([cargo_cmd, "build"] + cargo_options.split(), check=True)
+shutil.copy(bin_output, output_file)

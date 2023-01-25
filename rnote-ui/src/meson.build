@@ -43,12 +43,13 @@ config = configure_file(
     configuration: global_conf,
 )
 # Copy the config.rs output to the source directory.
+py = import('python')
 run_command(
-    'cp',
-    meson.project_build_root() / 'rnote-ui' / 'src' / 'config.rs',
-    meson.project_source_root() / 'rnote-ui' / 'src' / 'config.rs',
-    check: true,
-)
+  py.find_installation(),
+  meson.project_source_root() / 'build-aux' / 'copy_file.py',
+  meson.project_build_root() / 'rnote-ui' / 'src' / 'config.rs',
+  meson.project_source_root() / 'rnote-ui' / 'src' / 'config.rs',
+  check: true)
 
 rnote_ui_sources = files(
     'app/appactions.rs',

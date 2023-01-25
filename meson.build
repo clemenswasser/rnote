@@ -2,7 +2,7 @@ project(
     'rnote',
     ['rust', 'cpp'],
     version: '0.5.13',
-    meson_version: '>= 0.57',
+    meson_version: '>= 0.64',
 )
 # add a patch suffix for alpha or beta version, starting with a dash.
 patch = '-beta3'
@@ -23,11 +23,7 @@ app_issues_url = 'https://github.com/flxzt/rnote/issues'
 app_support_url = 'https://github.com/flxzt/rnote/discussions'
 app_donate_url = 'https://rnote.flxzt.net/donate/'
 app_author_name = 'Felix Zwettler'
-app_authors = run_command(
-    'cat',
-    meson.project_source_root() / 'AUTHORS',
-    check: true,
-).stdout().strip()
+app_authors = fs.read(meson.project_source_root() / 'AUTHORS').strip()
 
 version = meson.project_version()
 version_array = version.split('.')

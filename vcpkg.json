@@ -1,0 +1,13 @@
+{
+  "name": "rnote",
+  "version": "1",
+  "description": "Testing meson and vcpkg integration together using manifest mode of vcpkg",
+  "dependencies": [
+    "pkgconf",
+    "glib",
+    "gtk",
+    "libadwaita",
+    "poppler",
+    "gettext"
+  ]
+}
